@@ -1,0 +1,11 @@
+body {
+    /* background-color: rgb(250,250, 250); */
+    background-color: rgb(204, 38, 38);
+
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(105, 105, 105);
+}
