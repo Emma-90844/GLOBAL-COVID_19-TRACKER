@@ -3,18 +3,21 @@ import axios from 'axios';
 const url = 'https://covid19.mathdro.id/api';
 
 
-export const fetchData = async() => {
+export const fetchData = async(country) => {
+   // makig option selection dynamic
+    let changerbleUrl = url;
+    //making a changerble url
+    if(country) {
+        changerbleUrl = `${url}/countries/${country}`
+    }
+
     try {
-        const {data:{confirmed, recovered, deaths, lastUpdate}}  = await axios.get(url);
+        const { data: { confirmed, recovered, deaths, lastUpdate } }  = await axios.get(changerbleUrl);
  
-        const modifiedData = {
-            confirmed,
-            recovered,
-            deaths,
-            lastUpdate,
-        }
-        return modifiedData;
+        return { confirmed, recovered, deaths, lastUpdate }
+      
     } catch (error){
+        console.log(error)
     }
 }
 
@@ -42,7 +45,7 @@ export const fetchCountries = async () => {
         
     } catch(error){
         console.log(error)
-    }
+    } 
 }
 
 
